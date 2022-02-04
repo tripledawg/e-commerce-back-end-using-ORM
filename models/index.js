@@ -3,30 +3,30 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-const { belongsTo } = require('./Product');
+// const { belongsTo } = require('./Product');  //why is this greyed out?
 
 // Products belongsTo Category
 Product.belongsTo(Category, {
-  foreignKey: 'id',
+  foreignKey: 'category_id'
   //correct?? 
 });
 
 // Categories have many Products
 Category.hasMany(Product, {
-  foreignKey: 'id',
+  // foreignKey: 'id',
   //correct?? 
 });
 
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
-  foreignKey: 'id,'//'id'?
-})
+  through: ProductTag 
+});
 
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product,
   {
-    foreignKey: 'id'//'id'?
-  })
+    through: ProductTag 
+  });
 
 module.exports = {
   Product,
