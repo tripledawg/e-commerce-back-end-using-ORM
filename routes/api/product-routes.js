@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(singleProduct);
   }
   else {
-    res.status(404).json('No products found.');
+    res.status(404).json('No product found.');
   }
 });
 
