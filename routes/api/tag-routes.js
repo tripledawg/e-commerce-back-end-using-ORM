@@ -8,7 +8,7 @@ const { Tag, Product, ProductTag } = require('../../models');
   router.get('/', async (req, res) => {
     const findAllTags = await Tag.findAll({
       include: [
-        { model: Product },
+        { model: Product }
       ]
     });
     if (findAllTags) {
@@ -56,13 +56,28 @@ router.put('/:id', (req, res) => {
       where: {
         id: req.params.id,
       },
+    }).then((tag) => {
+      console.log(tag);
+      res.status(200).json(tag);
     })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+    });
   });
 
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
     Tag.destroy({ where: { id: req.params.id } })
+    .then((tag) => {
+
+      res.status(200).json(tag);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
   });
   
 
