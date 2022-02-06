@@ -17,11 +17,4 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on ' + PORT));
 });
 
-// first tried sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log('App listening on port ${PORT}!'));
-// });
 
-// //original
-// app.listen(PORT, () => {
-//   console.log(`App listening on port ${PORT}!`);
-// });

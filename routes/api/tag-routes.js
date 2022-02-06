@@ -36,8 +36,8 @@ const { Tag, Product, ProductTag } = require('../../models');
     }
   });
 
-router.post('/', (req, res) => {
   // create a new tag
+router.post('/', (req, res) => {
     Tag.create(req.body)
       .then((tag) => {
         
@@ -49,9 +49,8 @@ router.post('/', (req, res) => {
       });
   });
   
-
+// update a tag's name by its `id` value
 router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
     Tag.update(req.body, {
       where: {
         id: req.params.id,
@@ -66,9 +65,8 @@ router.put('/:id', (req, res) => {
     });
   });
 
-
-router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
+router.delete('/:id', (req, res) => {
     Tag.destroy({ where: { id: req.params.id } })
     .then((tag) => {
 
